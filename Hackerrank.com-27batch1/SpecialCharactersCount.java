@@ -1,23 +1,21 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
-public class MissesCounter {
-    public static void main(String[] args)
-    {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        scanner.close();
-        char[] misses = {'@', '$', '^'};
-        int count = 0;
-        for (char c : input.toCharArray())
-        {
-            for (char miss : misses)
-            {
-                if (c == miss)
-                {
-                    count++;
-                }
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String input=sc.nextLine();
+        int misscount=0;
+        for(char ch:input.toCharArray()){
+            if(!Character.isLetterOrDigit(ch)&& ch !=' '){
+                misscount++;
             }
         }
-        System.out.println(count);
+        System.out.println(misscount);
+        
     }
 }
