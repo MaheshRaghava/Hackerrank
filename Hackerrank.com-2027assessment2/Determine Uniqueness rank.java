@@ -1,43 +1,43 @@
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
+public class Solution {
 
-public class UniquenessRank {
-
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Scanner scanner = new Scanner(System.in);
-
-        // Read input values
-        int n = scanner.nextInt(); // Read N
-        int z = scanner.nextInt(); // Read Z
+        int n = scanner.nextInt(); 
+        int z = scanner.nextInt();
 
         int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = scanner.nextInt(); // Read array elements
+        for (int i = 0; i < n; i++) 
+        {
+            arr[i] = scanner.nextInt();
         }
 
-        // Check uniqueness
         Set<Integer> uniqueElements = new HashSet<>();
-        for (int num : arr) {
+        for (int num : arr) 
+        {
             uniqueElements.add(num);
         }
         int uniqueCount = uniqueElements.size();
 
-        if (uniqueCount == n) {
+        if (uniqueCount == n)
+        {
             System.out.println("YES");
-        } else {
+        } else
+        {
             System.out.println("NO");
         }
-
-        // Determine the uniqueness rank
-        if (uniqueCount == z) {
+        if (uniqueCount == z)
+        {
             System.out.println("Good");
-        } else if (uniqueCount < z) {
+        } else if (uniqueCount < z)
+        {
             System.out.println("Bad");
-        } else {
+        } else
+        {
             System.out.println("Average");
         }
-
-        scanner.close();
     }
 }
