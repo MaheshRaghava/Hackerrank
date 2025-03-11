@@ -1,29 +1,31 @@
 import java.util.*;
+import java.text.*;
 
 public class SortDates {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
+    public static void main(String[] args) throws ParseException {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        scanner.close();
         
-        String[] dateStrings = input.split(", ");
+        String[] dateStrings = input.split(",");
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
+        
         List<Date> dates = new ArrayList<>();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
-
-        try {
-            for (String dateStr : dateStrings) {
-                dates.add(sdf.parse(dateStr));
-            }
-            
-            Collections.sort(dates);
-            
-            List<String> sortedDates = new ArrayList<>();
-            for (Date date : dates) {
-                sortedDates.add(sdf.format(date));
-            }
-            
-            System.out.println(String.join(", ", sortedDates));
-        } catch (Exception e) {
-            System.out.println("Invalid date format!");
+        for (String dateStr : dateStrings) {
+            dateStr = dateStr.trim();
+            Date date = inputFormat.parse(dateStr.substring(0, 2) + " " + dateStr.substring(3, 6).toUpperCase() + " " + dateStr.substring(7));
+            dates.add(date);
         }
+        
+        Collections.sort(dates);
+        
+        List<String> sortedDateStrings = new ArrayList<>();
+        for (Date date : dates) {
+            sortedDateStrings.add(outputFormat.format(date));
+        }
+        
+        System.out.println(String.join(", ", sortedDateStrings));
     }
 }
+5th
