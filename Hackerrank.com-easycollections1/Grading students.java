@@ -10,7 +10,7 @@ import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
-class Solution
+class Result
 {
 
     public static List<Integer> gradingStudents(List<Integer> grades)
